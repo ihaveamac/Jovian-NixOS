@@ -150,7 +150,7 @@ holo-fstab-repair.check = "0.2-1"
 # the split out locales
 holo-glibc-locales.check = "2.41+r65+ge7c419a29575-1"
 
-# FIXME(fremont): but also other VR stuffs
+# FIXME(fremont): moved to jupiter-hw-support, but also other VR stuffs
 holo-grant-cap-sys-nice.check = "1.0-1"
 
 # we don't use those repos
@@ -165,8 +165,14 @@ holo-nix-offload.ignore = true
 # FIXME: needs matching plymouth
 holo-plymouth-themes.check = "0.6-1"
 
-# FIXME: investigate
+# debug tool
+holo-realtek-firmware-toggles.ignore = true
+
+# dev tooling for Arch packaging
 holo-rust-packaging-tools.ignore = true
+
+# implemented as nixos modules/stub
+holo-session-selection.map = true
 
 # applied as NixOS config
 holo-zram-swap.check = "0.3-0"
@@ -196,7 +202,7 @@ jupiter-firewall.ignore = true
 
 jupiter-hw-support = { map = ["jupiter-hw-support", "steamdeck-hw-theme", "steamdeck-firmware", "holo-polkit-helpers"], pkgrel = 1 }
 
-jupiter-legacy-support.check = "1.159-1"
+jupiter-legacy-support.check = "1.160-1"
 
 # Valve telemetry stuff
 jupiter-steamos-log-submitter.ignore = true
@@ -219,6 +225,9 @@ kdumpst.ignore = true
 
 # just packaging changes
 kmod.check = "34.2-1.1"
+
+# packaging changes for SteamOS
+kscreenlocker.check = "6.4.3-2"
 
 # hack for hidpi on internal display
 kwin.check = "6.4.3-1.11"
@@ -329,7 +338,7 @@ plasma-pa.check = "6.4.3-3"
 plasma-remotecontrollers.check = "5.26.90.r258.g9ace9a9-2"
 
 # packaging changes for SteamOS A/B
-plasma-workspace.check = "6.4.3-1.3"
+plasma-workspace.check = "6.4.3-1.4"
 
 # FIXME: lots of patches, need to investigate
 plymouth.check = "22.02.122-7.3"
@@ -380,18 +389,21 @@ steam_notif_daemon = { map = true, pkgrel = 3, fixup = "v" }
 steamdeck-dsp = { map = true, pkgrel = 1 }
 
 # we don't ship those but they may be useful to reference
-steamdeck-kde-presets.check = "3.9.2-1"
+steamdeck-kde-presets.check = "3.9.3-2"
 
 # very old, unused, but might be interesting? 
 steamfs-git.ignore = true
+
+# Arch packaging hack
+steamos-alias.ignore = true
 
 # more A/B stuff
 steamos-atomupd-client.ignore = true
 
 # applied as NixOS modules instead
 # check both to make sure we get the latest changes
-steamos-customizations-git.check = "20260521.1-1"
-steamos-customizations-jupiter.check = "20260521.1-1"
+steamos-customizations-git.check = "20260602.2-1"
+steamos-customizations-jupiter.check = "20260602.2-1"
 
 # devkit stuff
 steamos-devkit-service.ignore = true
@@ -428,8 +440,8 @@ steamos-systemreport.ignore = true
 # applied as NixOS config
 steamos-tweak-mtu-probing.check = "1-1"
 
-# SteamOS A/B specific patch
-systemd.check = "257.7-2.5"
+# SteamOS A/B specific patches and other miscellanea
+systemd.check = "257.7-2.6"
 
 # lul
 ttf-twemoji-default.ignore = true
